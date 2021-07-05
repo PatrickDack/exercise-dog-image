@@ -17,6 +17,20 @@ class App extends React.Component {
     this.fetchAPI();
   }
 
+  shouldComponentUpdate(_nextProps, nextState) {
+    const typeFilter = 'terrier';
+    const { dog } = this.state;
+    if (dog) {
+      console.log(nextState.dog);
+      return !nextState.dog.includes(typeFilter);
+    }
+    return true;
+  }
+
+  componentDidUpdate() {
+
+  }
+
   handleClick() {
     this.fetchAPI();
   }
@@ -30,16 +44,21 @@ class App extends React.Component {
       this.setState({
         dog: response.message,
         loading: false,
+        type: response.message.split('/')[4],
       });
+      const { dog, type } = this.state;
+      localStorage.setItem('currentURL', dog);
+      const time = 1000;
+      setTimeout(() => alert(type), time);
     });
   }
 
   render() {
     const { dog, loading } = this.state;
-    const dogImage = <img src={ dog } alt="Imagem de um cachorro" />;
+    const dogImage = <img src={ dog } alt="Imagem de cachorro" className="dog-image" />;
     const loadingElement = <div>Loading...</div>;
     return (
-      <div>
+      <div className="body">
         {
           loading ? loadingElement : dogImage
         }
