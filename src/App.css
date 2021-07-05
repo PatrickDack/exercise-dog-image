@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+h2 {
+  text-align: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -26,6 +30,40 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.image-container {
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.dog-image {
+  height: 200px;
+  padding: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  background-color: orangered;
+}
+
+.gallery-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes App-logo-spin {
